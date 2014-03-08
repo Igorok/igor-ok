@@ -1,0 +1,44 @@
+{% extends 'AdminCrudBundle::layout.html.twig' %}
+{% block script %}
+    <script>
+        $(function(){
+            $('.adminMenu > li').removeClass('active');
+            $('.blogimageLi').addClass('active');
+        })
+    </script>
+{% endblock script %}
+    
+    
+{% block body -%}
+    <h1>
+        Загрузить картинку
+    </h1>
+    <p>
+        <a href="{{ path('blogimage') }}" class="btn btn-default">
+          <span class="glyphicon glyphicon-arrow-left"></span> Вернуться к списку
+        </a>
+    </p>
+
+    {#{ form(form) }#}
+
+    <div class="feedback_form">        
+        <form action="{{ path('blogimage_create') }}" method="POST" id="contact_form" {{ form_enctype(form) }}>
+            {{ form_errors(form) }}
+            
+            <div class="form-group clearfix">
+                <p>
+                {{ form_label(form.image) }}
+                </p>
+                {{ form_widget(form.image) }}
+            </div>
+            
+             <button type="submit" id="form_submit" name="form[submit]" class="btn btn-default">
+                <span class="glyphicon glyphicon-check"></span> Создать
+            </button>
+            
+             {{ form_row(form._token) }}
+         </form>
+       </div>  
+    
+        <!-- -->
+{% endblock %}

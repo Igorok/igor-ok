@@ -1,0 +1,67 @@
+<?php
+
+namespace Demos\BlogBundle\Entity;
+
+class Contact
+{
+    protected $name;
+
+    protected $email;
+
+    protected $subject;
+
+    protected $body;
+    
+    protected $captcha;
+
+    public function getName()
+    {
+        return $this->name;
+    }
+
+    public function setName($name)
+    {
+        $this->name = $name;
+    }
+
+    public function getEmail()
+    {
+        return $this->email;
+    }
+
+    public function setEmail($email)
+    {
+        $this->email = $email;
+    }
+
+    public function getSubject()
+    {
+        return $this->subject;
+    }
+
+    public function setSubject($subject)
+    {
+        $this->subject = $subject;
+    }
+
+    public function getBody()
+    {
+        return $this->body;
+    }
+
+    public function setBody($body)
+    {
+        $this->body = $body;
+    }
+    
+    public function getCaptcha()
+    {
+        return $this->captcha;
+    }
+
+    public function setCaptcha($captcha)
+    {
+        $this->captcha = $captcha;
+    }
+    
+}

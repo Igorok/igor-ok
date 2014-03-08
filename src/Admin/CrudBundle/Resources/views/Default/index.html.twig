@@ -1,0 +1,81 @@
+{% extends 'AdminCrudBundle::layout.html.twig' %}
+{% block script %}
+    <script>
+        $(function(){
+            $('.adminMenu > li').removeClass('active');
+            $('.mainLi').addClass('active');
+        })
+    </script>
+{% endblock script %}
+
+{% block body %}
+      <div class="sliderCase">
+        <!-- carousel start -->
+        <div id="myCarousel" class="carousel slide">
+          <!-- Carousel items -->
+          <div class="carousel-inner">
+            <!-- slide, 3 image in 1 slide -->
+            <div class="item clearfix active">
+            {% set numSlide = 0 %}
+            {% for oneProject in project %}
+                <div class="slide_img" data-slideNum="{{ loop.index }}">
+                    <img src="{{ oneProject.image.path }}">
+                </div>
+                {% if loop.last %}
+                    {% set numSlide = numSlide+1 %}    
+                    </div>
+                {% elseif loop.index != 0 and loop.index % 3 == 0 %}
+                    </div>
+                    <div class="item clearfix">
+                    {% set numSlide = numSlide+1 %}
+                {% endif %}
+            {% endfor %}
+                
+            <!-- end slide -->
+          </div>
+          <!-- Carousel nav -->
+          <a class="carousel-control left" href="#myCarousel" data-slide="prev">&lsaquo;</a>
+          <a class="carousel-control right" href="#myCarousel" data-slide="next">&rsaquo;</a>
+          <!-- slider button -->
+          <ol class="carousel-indicators">
+            <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
+            {% for i in 1..numSlide-1 %}
+                <li data-target="#myCarousel" data-slide-to="{{ i }}"></li>
+            {% endfor %}
+          </ol>
+          
+          <!-- end slider button -->  
+            
+            
+        </div>
+        <!-- carousel end -->
+        
+      </div>
+      <!-- slider case end -->
+        <div class="row separatorBrown"></div>
+        <!-- -->
+        <div class="row">
+            <div class="col-md-offset-1 col-md-4 mainNewsCase">
+                <a href="{{ path('_default') }}news/" class="mainIcon miNews"></a>
+                <h3>Новости</h3>
+                <h4>{{ oneNews.Title }}</h4>
+                <p>{{oneNews.ShortDescription}}</p>
+                <p class="linkCase">
+                    <a href="{{ path('_default') }}news/{{ oneNews.Id }}/{{ oneNews.NewsUrl }}" class="btn btn-default">Читать далее</a>
+                </p>
+            </div>
+            <!--  -->
+            <div class="col-md-offset-2 col-md-4 mainNewsCase">
+                <a href="{{ path('_default') }}post/" class ="mainIcon miArticle"></a>
+                <h3>Статьи</h3>
+                <h4>{{ onePost.Title }}</h4>
+                <p>
+                    {{onePost.ShortDescription}}
+                </p>
+                <p class="linkCase">
+                    <a href="{{ path('_default') }}post/{{ onePost.Id }}/{{ onePost.PostUrl }}" class="btn btn-default">Читать далее</a>
+                </p>
+            </div>
+        </div>
+        <!-- -->
+{% endblock body %}

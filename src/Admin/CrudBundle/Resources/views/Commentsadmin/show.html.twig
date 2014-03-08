@@ -1,0 +1,75 @@
+{% extends 'AdminCrudBundle::layout.html.twig' %}
+{% block script %}
+    <script>
+        $(function(){
+            $('.adminMenu > li').removeClass('active');
+            $('.commentLi').addClass('active');
+        })
+    </script>
+{% endblock script %}
+    
+    
+{% block body -%}
+    <h1>{{ entity.postId.title }}</h1>
+    <p>&nbsp;</p>
+    
+    <div class="container">
+        <div class="row">
+            <div class="col-md-2"><strong>Id</strong></div>
+            <div class="col-md-10">{{ entity.id }}</div>
+        </div>
+        <p>&nbsp;</p>
+        
+        <div class="row">
+            <div class="col-md-2"><strong>Статья</strong></div>
+            <div class="col-md-10">{{ entity.postId.title }}</div>
+        </div>
+        <p>&nbsp;</p>
+        
+        <div class="row">
+            <div class="col-md-2"><strong>Имя</strong></div>
+            <div class="col-md-10">{{ entity.name }}</div>
+        </div>
+        <p>&nbsp;</p>
+        
+        <div class="row">
+            <div class="col-md-2"><strong>Email</strong></div>
+            <div class="col-md-10">{{ entity.email }}</div>
+        </div>
+        <p>&nbsp;</p>
+        
+        <div class="row">
+            <div class="col-md-2"><strong>Комментарий</strong></div>
+            <div class="col-md-10">{{ entity.description }}</div>
+        </div>
+        <p>&nbsp;</p>        
+        
+        <div class="row">
+            <div class="col-md-2"><strong>Время</strong></div>
+            <div class="col-md-10">{{ entity.createdtime|date('Y-m-d H:i:s') }}</div>
+        </div>
+        <p>&nbsp;</p>
+        
+    </div>
+    
+    <p>
+        <!-- Вернуться к списку -->
+        <a href="{{ path('comments') }}" class="btn btn-default">
+            <span class="glyphicon glyphicon-arrow-left"></span> Вернуться к списку
+        </a>
+        <!-- Редактировать -->
+        <a href="{{ path('comments_edit', { 'id': entity.id }) }}" class="btn btn-default">
+            <span class="glyphicon glyphicon-pencil"></span> Редактировать
+        </a>
+        <!-- Удалить -->
+        <form action="{{ path('comments_delete',{'id': entity.id}) }}" method="POST" {{ form_enctype(delete_form) }}>
+            
+            <button type="submit" id="form_submit" name="form[submit]" class="btn btn-default">
+                <span class="glyphicon glyphicon-remove"></span> Удалить
+            </button>
+            {{ form_row(delete_form._token) }}
+         </form>
+    </p>
+    <p>&nbsp;</p>
+   </div>  
+{% endblock %}

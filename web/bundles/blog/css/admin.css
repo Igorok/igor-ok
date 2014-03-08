@@ -1,0 +1,42 @@
+.img-rounded {
+    width: 100%;
+}
+/* pizdec */
+.navbar-brand {
+
+}
+/* responsive */
+
+/* Large desktop */
+@media (min-width: 1200px) {
+    
+}
+ /* Portrait tablet to landscape and desktop */
+@media (min-width: 980px) { 
+    .navbar-brand {
+        position: absolute;
+        width: 146px;
+        height: 146px;
+        left: 50%;
+        top: 5px;
+        margin-left: -73px;
+    }
+    .pageCatalog {
+        margin-top: 70px;
+    }
+    .feedback_form {
+        width: 70%;
+        margin: 20px 0;
+    }
+/* Portrait tablet to landscape and desktop */
+@media (min-width: 768px) and (max-width: 979px) { 
+    
+}
+ 
+/* Landscape phone to portrait tablet */
+@media (max-width: 767px) {
+    
+}
+ 
+/* Landscape phones and down */
+@media (max-width: 480px) {}

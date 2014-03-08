@@ -1,0 +1,15 @@
+demos_blog:
+    resource: "@DemosBlogBundle/Controller/"
+    #type:     annotation
+    #prefix:   /
+    defaults:  { controller: DemosBlogBundle:Default:index }
+    #path:      /
+
+admin_blog:
+    resource: "@AdminUserBundle/Resources/config/routing.yml"
+    prefix:   /backend/
+
+crud_blog:
+    resource: "@AdminCrudBundle/Controller/"
+    type:     annotation
+    prefix:   /backend/

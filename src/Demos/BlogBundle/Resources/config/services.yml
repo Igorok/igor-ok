@@ -1,0 +1,14 @@
+# src/Acme/MainBundle/Resources/config/services.yml
+services:
+    demos_blog.menu_builder:
+        class: Demos\BlogBundle\Menu\MenuBuilder
+        arguments: ["@knp_menu.factory"]
+
+    acme_main.menu.main:
+        class: Knp\Menu\MenuItem # the service definition requires setting the class
+        factory_service: demos_blog.menu_builder
+        factory_method: createBlogMenu
+        arguments: ["@request"]
+        scope: request # needed as we have the request as a dependency here
+        tags:
+            - { name: knp_menu.menu, alias: blog } # The alias is what is used to retrieve the menu

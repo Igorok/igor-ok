@@ -1,0 +1,48 @@
+{% extends 'AdminCrudBundle::layout.html.twig' %}
+{% block script %}
+    <script>
+        $(function(){
+            $('.adminMenu > li').removeClass('active');
+            $('.statusLi').addClass('active');
+        })
+    </script>
+{% endblock script %}
+
+{% block body -%}
+    <h1>{{ entity.title }}</h1>
+    <p>&nbsp;</p>
+    
+    <div class="container">
+        <div class="row">
+            <div class="col-md-2"><strong>Id</strong></div>
+            <div class="col-md-10">{{ entity.id }}</div>
+        </div>
+        <p>&nbsp;</p>
+        
+        <div class="row">
+            <div class="col-md-2"><strong>Заголовок</strong></div>
+            <div class="col-md-10">{{ entity.title }}</div>
+        </div>
+        <p>&nbsp;</p>
+    </div>    
+
+    <p>
+        <!-- Вернуться к списку -->
+        <a href="{{ path('status') }}" class="btn btn-default">
+            <span class="glyphicon glyphicon-arrow-left"></span> Вернуться к списку
+        </a>
+        <!-- Редактировать -->
+        <a href="{{ path('status_edit', { 'id': entity.id }) }}" class="btn btn-default">
+            <span class="glyphicon glyphicon-pencil"></span> Редактировать
+        </a>
+        <!-- Удалить -->
+        <form action="{{ path('status_delete',{'id': entity.id}) }}" method="POST" {{ form_enctype(delete_form) }}>
+            
+            <button type="submit" id="form_submit" name="form[submit]" class="btn btn-default">
+                <span class="glyphicon glyphicon-remove"></span> Удалить
+            </button>
+            {{ form_row(delete_form._token) }}
+         </form>
+    </p>
+    <p>&nbsp;</p>
+{% endblock %}

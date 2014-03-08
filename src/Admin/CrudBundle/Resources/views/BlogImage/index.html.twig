@@ -1,0 +1,63 @@
+{% extends 'AdminCrudBundle::layout.html.twig' %}
+{% block script %}
+    <script>
+        $(function(){
+            $('.adminMenu > li').removeClass('active');
+            $('.blogimageLi').addClass('active');
+        })
+    </script>
+{% endblock script %}
+    
+    
+{% block body -%}
+    <h1>
+        Картинки      
+    </h1>
+    <p>
+        <a href="{{ path('blogimage_new') }}" class="btn btn-default">
+          <span class="glyphicon glyphicon-edit"></span> 
+          Загрузить
+        </a>
+    </p>
+    <p>&nbsp;</p>
+    
+    <div class="container">
+        <!-- -->
+        
+        <div class="row">
+            {% for entity in entities %}
+            <div class="col-md-2">
+                <strong><a href="{{ path('blogimage_show', { 'id': entity.id }) }}">{{ entity.image.path }}</a></strong>
+                <p>
+                {%if entity.image %}
+                    <img src="{{ entity.image.path }}" alt="" class="img-rounded" />
+                {% endif %}
+                </p>
+                
+                {% if entity.createdtime %}{{ entity.createdtime|date('Y.m.d') }}{% endif %}
+                
+                <!-- Single button -->
+                <div class="btn-group">
+                  <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">
+                    Действия <span class="caret"></span>
+                  </button>
+                  <ul class="dropdown-menu" role="menu">
+                    <li>
+                        <a href="{{ path('blogimage_show', { 'id': entity.id }) }}">Показать</a>
+                    </li>
+                    <li>
+                        <a href="{{ path('blogimage_edit', { 'id': entity.id }) }}">Редактировать</a>
+                    </li>                  
+                  </ul>
+                </div>
+                
+                <p>&nbsp;</p>
+                
+                
+            </div>
+            {% endfor %}
+        </div>    
+        
+        
+    </div>
+    {% endblock %}

@@ -1,0 +1,22 @@
+{% block title %} - {{ thanksMessage }} {% endblock title %}
+
+{% extends 'DemosBlogBundle::layout.html.twig' %}
+{% block meta %}
+    <meta name="Keywords" content="Обратная связь">
+    <meta name="Description" content="Обратная связь">
+{% endblock meta %}
+
+{% block content %}
+    
+<div class="container textCase pageCatalog">
+    <p>&nbsp;</p>
+    <p class="feedbackHeadline">
+        {{ thanksMessage }}
+    </p>
+    <p>&nbsp;</p>
+    <!--div class="thanksImg">
+        <img src="{{ asset('bundles/blog/img/thanksimage.png') }}" alt="" />
+    </div-->
+    <p>&nbsp;</p>
+</div>
+{% endblock content %}

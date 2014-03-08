@@ -1,0 +1,14 @@
+{% block title %} - {{project.getTitle() | raw}}{% endblock title %}
+
+{% extends 'DemosBlogBundle::layout.html.twig' %}
+{% block meta %}
+    <meta name="Keywords" content="Портфолио">
+    <meta name="Description" content="Портфолио">
+{% endblock meta %}
+    
+{% block content %}
+    <h1>{{project.getTitle() | raw}}</h1>
+    <p>{{project.getContent()}}</p>
+    <p>{{project.getImage()}}</p>
+    <p>{{project.getLink()}}</p>
+{% endblock content %}

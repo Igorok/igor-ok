@@ -1,0 +1,67 @@
+{% extends 'AdminCrudBundle::layout.html.twig' %}
+{% block script %}
+    <script>
+        $(function(){
+            $('.adminMenu > li').removeClass('active');
+            $('.aboutLi').addClass('active');
+        })
+    </script>
+{% endblock script %}
+    
+    
+{% block body -%}
+    <h1>
+        Управление разделом о сайте        
+    </h1>
+    <p>
+        <a href="{{ path('about_new') }}" class="btn btn-default">
+          <span class="glyphicon glyphicon-edit"></span> 
+          Создать новую запись
+        </a>
+    </p>
+    <p>&nbsp;</p>
+    
+    <div class="container">
+        <div class="row">
+            <div class="col-md-1"><strong>Id</strong></div>
+            <div class="col-md-2"><strong>Заголовок</strong></div>
+            <div class="col-md-2"><strong>Meta keywords</strong></div>
+            <div class="col-md-2"><strong>Meta description</strong></div>
+            <div class="col-md-2"><strong>Картинка</strong></div>
+            <div class="col-md-1"><strong>Время написания</strong></div>
+            <div class="col-md-2"><strong>Управление</strong></div>
+        </div>
+        <!-- -->
+        {% for entity in entities %}
+        <div class="row">
+            <div class="col-md-1"><strong><a href="{{ path('about_show', { 'id': entity.id }) }}">{{ entity.id }}</a></strong></div>
+            <div class="col-md-2">{{ entity.title }}</div>
+            <div class="col-md-2">{{ entity.metakeywords }}</div>
+            <div class="col-md-2">{{ entity.metadescription }}</div>
+            <div class="col-md-2">
+                {%if entity.image %}
+                    <img src="{{ entity.image.path }}" alt="{{ entity.title}}" class="img-rounded" />
+                {% endif %}
+            </div>
+            <div class="col-md-1">{% if entity.createdtime %}{{ entity.createdtime|date('Y.m.d') }}{% endif %}</div>
+            <div class="col-md-2">
+                <!-- Single button -->
+                <div class="btn-group">
+                  <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">
+                    Действия <span class="caret"></span>
+                  </button>
+                  <ul class="dropdown-menu" role="menu">
+                    <li>
+                        <a href="{{ path('about_show', { 'id': entity.id }) }}">Показать</a>
+                    </li>
+                    <li>
+                        <a href="{{ path('about_edit', { 'id': entity.id }) }}">Редактировать</a>
+                    </li>                  
+                  </ul>
+                </div>
+            </div>
+        </div>    
+        {% endfor %}
+        <p>&nbsp;</p>
+    </div>
+    {% endblock %}
