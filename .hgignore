@@ -1,6 +1,0 @@
-syntax: glob
-app/config/config_dev.yml
-app/config/routing_dev.yml
-app/cache/
-app/logs/
-web/app_dev.php
