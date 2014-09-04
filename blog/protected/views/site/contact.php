@@ -5,7 +5,7 @@ $this->breadcrumbs=array(
 );
 ?>
 
-<h1>Contact Us</h1>
+<h3>Contact Us</h3>
 
 <?php if(Yii::app()->user->hasFlash('contact')): ?>
 
@@ -29,12 +29,12 @@ If you have business inquiries or other questions, please fill out the following
 
 	<div class="form-group">
 		<?php echo $form->labelEx($model,'name'); ?>
-		<?php echo $form->textField($model,'name', array('class'=>'form-control')); ?>
+		<?php echo $form->textField($model,'name', array('class'=>'form-control', 'required'=>'required')); ?>
 	</div>
 
 	<div class="form-group">
 		<?php echo $form->labelEx($model,'email'); ?>
-		<?php echo $form->textField($model,'email', array('class'=>'form-control')); ?>
+		<?php echo $form->emailField($model,'email', array('class'=>'form-control', 'required'=>'required')); ?>
 	</div>
 
 	<div class="form-group">
@@ -44,7 +44,7 @@ If you have business inquiries or other questions, please fill out the following
 
 	<div class="form-group">
 		<?php echo $form->labelEx($model,'body'); ?>
-		<?php echo $form->textArea($model,'body',array('rows'=>6, 'cols'=>50, 'class'=>'form-control')); ?>
+		<?php echo $form->textArea($model,'body',array('rows'=>6, 'cols'=>50, 'class'=>'form-control', 'required'=>'required')); ?>
 	</div>
 
 	<?php if(CCaptcha::checkRequirements()): ?>
@@ -53,7 +53,7 @@ If you have business inquiries or other questions, please fill out the following
 		<div>
 			<?php $this->widget('CCaptcha'); ?>
 			<br /><br />
-			<?php echo $form->textField($model,'verifyCode',array('class'=>'form-control')); ?>
+			<?php echo $form->textField($model,'verifyCode',array('class'=>'form-control', 'required'=>'required')); ?>
 		</div>
 		<div class="hint">Please enter the letters as they are shown in the image above.
 		<br/>Letters are not case-sensitive.</div>

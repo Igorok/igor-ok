@@ -22,7 +22,7 @@
 
         <div class="separatorBrown"></div>
 	    <!-- -->
-	    <h3 class="partnersHeadline">&nbsp;&nbsp;&nbsp;&nbsp;Партнеры</h3>
+	    <h3 class="partnersHeadline">&nbsp;&nbsp;&nbsp;&nbsp;Partners</h3>
 	    <!-- -->
 	    <div class="clearfix">
 	        <div class="partnersCase">
@@ -41,7 +41,7 @@
 	            <!-- -->
 	            <div class="ipatov_soft_banner">
 	                <a href="http://ipatov-soft.ru/" target="_blank">
-	                    Создание сайтов
+	                    Creating a website
 	                </a>
 	            </div>
 	            <!-- конец баннера -->

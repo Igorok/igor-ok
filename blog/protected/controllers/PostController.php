@@ -205,9 +205,12 @@ class PostController extends BaseController
 		{
 			$comment->attributes=$_POST['Comment'];
 			if($post->addComment($comment))
-			{
-				if($comment->status==Comment::STATUS_PENDING)
+			{	
+				$headers="From: {$comment->email}\r\nReply-To: {$comment->email}";
+				mail(Yii::app()->params['adminEmail'],$comment->author, $comment->content, $headers);
+				if($comment->status==Comment::STATUS_PENDING) {
 					Yii::app()->user->setFlash('commentSubmitted','Thank you for your comment. Your comment will be posted once it is approved.');
+				}
 				$this->refresh();
 			}
 		}

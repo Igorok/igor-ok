@@ -52,6 +52,7 @@ a:hover {
   background: -ms-linear-gradient(#2d3033, #1b1e1f);
   border-color: #2d3033;
 }
+.label-default a,
 .label-default:hover a,
 .label-default:focus a,
 .label-default:active a,

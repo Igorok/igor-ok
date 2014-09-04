@@ -18,10 +18,22 @@
       <script src="<?php echo Yii::app()->request->baseUrl; ?>/blog/blog/public/js/html5shiv.js"></script>
       <script src="<?php echo Yii::app()->request->baseUrl; ?>//blog/blog/public/js/respond.min.js"></script>
     <![endif]-->
-    <link rel="stylesheet" type="text/css" href="<?php echo Yii::app()->request->baseUrl; ?>/blog/public/css/bootstrap.min.css" />
-    <link rel="stylesheet" type="text/css" href="<?php echo Yii::app()->request->baseUrl; ?>/blog/public/css/style.css" />
-    <script type="text/javascript" src="/blog/public/javascript/bootstrap.min.js"></script>
 	<title><?php echo CHtml::encode($this->pageTitle); ?></title>
+
+    <?php
+        Yii::app()->clientScript
+        ->registerCoreScript('jquery') 
+        ->registerMetaTag($this->pageMetaDescription, 'description') //meta
+        ->registerMetaTag($this->pageMetaKeywords, 'keywords')
+
+        //->registerLinkTag('alternate','application/rss+xml',$this->createUrl('feed/materials')) //link
+        ->registerLinkTag('shortcut icon','image/png',$this->createUrl('/blog/public/img/favicon.png')) //link
+        ->registerCssFile(Yii::app()->request->baseUrl . '/blog/public/css/bootstrap.min.css') //css
+        ->registerCssFile(Yii::app()->request->baseUrl . '/blog/public/css/style.css') //css
+
+        ->registerScriptFile(Yii::app()->request->baseUrl . '/blog/public/javascripts/bootstrap.min.js')
+    ?>
+
 </head>
 
 <body>
@@ -30,7 +42,7 @@
         <div class="container">
           <!-- mobile logo -->
           <a class="mobileLogo" href="/">
-            <img src="<?php echo Yii::app()->request->baseUrl; ?>/img/logo.png" alt="">
+            <img src="<?php echo Yii::app()->request->baseUrl; ?>/blog/public/img/logo.png" alt="">
           </a>
           <!-- header start -->
           <div class="navbar navbar-inverse">

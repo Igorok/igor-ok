@@ -9,13 +9,13 @@
 
 	<div class="form-group">
 		<?php echo $form->labelEx($model,'author'); ?>
-		<?php echo $form->textField($model,'author',array('size'=>60,'maxlength'=>128, 'class'=>'form-control')); ?>
+		<?php echo $form->textField($model,'author',array('size'=>60,'maxlength'=>128, 'class'=>'form-control', 'required'=>'required')); ?>
 		<?php echo $form->error($model,'author'); ?>
 	</div>
 
 	<div class="form-group">
 		<?php echo $form->labelEx($model,'email'); ?>
-		<?php echo $form->textField($model,'email',array('size'=>60,'maxlength'=>128, 'class'=>'form-control')); ?>
+		<?php echo $form->emailField($model,'email',array('size'=>60,'maxlength'=>128, 'class'=>'form-control', 'required'=>'required')); ?>
 		<?php echo $form->error($model,'email'); ?>
 	</div>
 
@@ -27,7 +27,7 @@
 
 	<div class="form-group">
 		<?php echo $form->labelEx($model,'content'); ?>
-		<?php echo $form->textArea($model,'content',array('rows'=>6, 'cols'=>50, 'class'=>'form-control')); ?>
+		<?php echo $form->textArea($model,'content',array('rows'=>6, 'cols'=>50, 'class'=>'form-control', 'required'=>'required')); ?>
 		<?php echo $form->error($model,'content'); ?>
 	</div>
 
